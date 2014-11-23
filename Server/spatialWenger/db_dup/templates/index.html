@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Index</title>
+{% endblock %}
+
+{% block content %}
+<div id="content">
+    <form action="/db/select_layer/" id="select_layer" method="post">{% csrf_token %}
+        <fieldset>
+            <h2> Please select source datasource </h2> 
+            {% for ds in DS_facade %}
+            <input type="radio" id="{{ds.name}}" value="{{ds.id}}" name="src_ds">
+            <label for="{{ds.name}}">{{ds.name}}</label>
+            <br/>
+            {% endfor %}
+        </fieldset>
+        <fieldset>
+            <h2> Please select destination datasource </h2> 
+            {% for ds in DS_facade %}
+            <input type="radio" id="{{ds.name}}" value="{{ds.id}}" name="dst_ds">
+            <label for="{{ds.name}}">{{ds.name}}</label>
+            <br/>
+            {% endfor %}
+        </fieldset>
+        <button type="submit">Submit</button>
+    </form>
+
+</div>
+{% endblock %}

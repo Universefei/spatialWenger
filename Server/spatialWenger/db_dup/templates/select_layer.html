@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>List layers</title>
+{% endblock %}
+
+{% block content %}
+<div id="content">
+    <form action="/db/dup_layer/" id="dup_layer" method="post">{% csrf_token %}
+        <fieldset>
+            {% for layer in layerList %}
+            <input type="checkbox" id="{{layer}}" value="{{layer}}" name="srcLayers">
+            <label for="{{layer}}">{{layer}}</label>
+            <br/>
+            {% endfor %}
+        </fieldset>
+        <button type="submit">Submit</button>
+    </form>
+
+</div>
+{% endblock %}
